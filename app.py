@@ -2,9 +2,9 @@ from operator import index
 import streamlit as st
 import plotly.express as px
 import numpy as np
-from pycaret.regression import setup, compare_models, pull, save_model, load_model, plot_model
-import h2o
-from h2o.automl import H2OAutoML
+# from pycaret.regression import setup, compare_models, pull, save_model, load_model, plot_model
+# import h2o
+# from h2o.automl import H2OAutoML
 # import pandas_profiling
 from pandas_profiling import ProfileReport
 import pandas as pd
@@ -50,16 +50,16 @@ if choice == "Modelling":
         # aml.train(training_frame = train, y = 'y', leaderboard_frame = my_leaderboard_frame)
         # best_model = aml.get_best_model()
         # model_path = h2o.save_model(model=best_model,force=True)
-        setup(df, target=chosen_target, silent=True)
-        setup_df = pull()
-        st.dataframe(setup_df)
-        best_model = compare_models()
-        compare_df = pull()
-        st.dataframe(compare_df)
-        plot_model(best_model, plot='residuals', display_format='streamlit')
-        plot_model(best_model, plot='feature', display_format='streamlit')
-        plot_model(best_model, plot='error', display_format='streamlit')
-        save_model(best_model, 'best_model')
+        # setup(df, target=chosen_target, silent=True)
+        # setup_df = pull()
+        # st.dataframe(setup_df)
+        # best_model = compare_models()
+        # compare_df = pull()
+        # st.dataframe(compare_df)
+        # plot_model(best_model, plot='residuals', display_format='streamlit')
+        # plot_model(best_model, plot='feature', display_format='streamlit')
+        # plot_model(best_model, plot='error', display_format='streamlit')
+        # save_model(best_model, 'best_model')
 
 if choice == "Download": 
     with open('best_model.pkl', 'rb') as f: 
