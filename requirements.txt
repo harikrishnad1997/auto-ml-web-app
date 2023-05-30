@@ -114,7 +114,7 @@ scipy
 seaborn
 # semver==2.13.0
 # six==1.16.0
-sklearn
+# sklearn
 # smart-open==6.2.0
 # smmap==5.0.0
 # spacy==2.3.8
