@@ -69,8 +69,8 @@ matplotlib-inline==0.1.6
 numpy==1.20.3
 # oauthlib==3.2.2
 # packaging==21.3
-pandas==1.5.1
-pandas-profiling==3.4.0
+pandas
+pandas-profiling
 # parso==0.8.3
 # patsy==0.5.3
 # phik==0.12.2
@@ -113,7 +113,7 @@ scipy==1.5.4
 seaborn==0.12.1
 # semver==2.13.0
 # six==1.16.0
-sklearn==0.0
+sklearn
 # smart-open==6.2.0
 # smmap==5.0.0
 # spacy==2.3.8
