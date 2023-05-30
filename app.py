@@ -1,8 +1,12 @@
 from operator import index
 import streamlit as st
 import plotly.express as px
+import numpy as np
 # from pycaret.regression import setup, compare_models, pull, save_model, load_model
-import pandas_profiling
+import h2o
+from h2o.automl import H2OAutoML
+# import pandas_profiling
+from ydata_profiling import ProfileReport
 import pandas as pd
 from streamlit_pandas_profiling import st_profile_report
 import os 
@@ -11,7 +15,7 @@ if os.path.exists('./dataset.csv'):
     df = pd.read_csv('dataset.csv', index_col=None)
 
 with st.sidebar: 
-    st.image("https://cdn.analyticsvidhya.com/wp-content/uploads/2020/04/regression-vs-classification-in-machine-learning.png")
+    st.image("https://pbs.twimg.com/profile_images/1305487240148086784/j8jxHAXh_400x400.jpg")
     st.title("AutoML")
     choice = st.radio("Navigation", ["Upload","Profiling","Modelling", "Download"])
     st.info("This project application helps you build and explore your data.")
@@ -32,6 +36,19 @@ if choice == "Profiling":
 if choice == "Modelling": 
     chosen_target = st.selectbox('Choose the Target Column', df.columns)
     if st.button('Run Modelling'): 
+        h2o.init()
+        df = h2o.import_file(df)
+        df.describe(chunk_summary=True)
+        train, test = df.split_frame(ratios=[0.8], seed = 1)
+        aml = H2OAutoML(max_models =25,
+                balance_classes=True,
+		seed =16548846)
+        aml.train(training_frame = train, y = 'y')
+        lb = aml.leaderboard
+        lb.head(rows=lb.nrows)
+        aml.train(training_frame = train, y = 'y', leaderboard_frame = my_leaderboard_frame)
+        best_model = aml.get_best_model()
+        model_path = h2o.save_model(model=best_model,force=True)
         # setup(df, target=chosen_target, silent=True)
         # setup_df = pull()
         # st.dataframe(setup_df)
