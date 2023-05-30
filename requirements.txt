@@ -20,6 +20,7 @@
 # cymem==2.0.7
 # databricks-cli==0.17.3
 # debugpy==1.6.3
+django
 # decorator==5.1.1
 # docker==6.0.0
 # entrypoints==0.4
@@ -38,7 +39,7 @@
 # imbalanced-learn==0.7.0
 # importlib-metadata==5.0.0
 # ipykernel==6.16.2
-# ipython==8.5.0
+ipython
 # ipywidgets==8.0.2
 # itsdangerous==2.1.2
 # jedi==0.18.1
@@ -97,8 +98,8 @@ pycaret
 # pyod==1.0.6
 # pyparsing==3.0.9
 # pyrsistent==0.18.1
-# python-dateutil==2.8.2
-# pytz==2022.5
+python-dateutil
+pytz
 # pytz-deprecation-shim==0.1.0.post0
 # pywin32==304
 # PyYAML==5.4.1
