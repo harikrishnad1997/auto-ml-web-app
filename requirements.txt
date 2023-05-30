@@ -50,7 +50,7 @@ jupyter_core==4.11.2
 jupyterlab-widgets==3.0.3
 kiwisolver==1.4.4
 kmodes==0.12.2
-lightgbm==3.3.3
+# lightgbm==3.3.3
 llvmlite==0.37.0
 Mako==1.2.3
 MarkupSafe==2.1.1
