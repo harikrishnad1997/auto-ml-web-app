@@ -2,7 +2,7 @@ from operator import index
 import streamlit as st
 import plotly.express as px
 import numpy as np
-# from pycaret.regression import setup, compare_models, pull, save_model, load_model
+from pycaret.regression import setup, compare_models, pull, save_model, load_model
 import h2o
 from h2o.automl import H2OAutoML
 # import pandas_profiling
@@ -36,26 +36,26 @@ if choice == "Profiling":
 if choice == "Modelling": 
     chosen_target = st.selectbox('Choose the Target Column', df.columns)
     if st.button('Run Modelling'): 
-        h2o.init()
-        df = h2o.import_file(df)
-        df.describe(chunk_summary=True)
-        train, test = df.split_frame(ratios=[0.8], seed = 1)
-        aml = H2OAutoML(max_models =25,
-                balance_classes=True,
-		seed =16548846)
-        aml.train(training_frame = train, y = 'y')
-        lb = aml.leaderboard
-        lb.head(rows=lb.nrows)
-        aml.train(training_frame = train, y = 'y', leaderboard_frame = my_leaderboard_frame)
-        best_model = aml.get_best_model()
-        model_path = h2o.save_model(model=best_model,force=True)
-        # setup(df, target=chosen_target, silent=True)
-        # setup_df = pull()
-        # st.dataframe(setup_df)
-        # best_model = compare_models()
-        # compare_df = pull()
-        # st.dataframe(compare_df)
-        # save_model(best_model, 'best_model')
+        # h2o.init()
+        # df = h2o.import_file(df)
+        # df.describe(chunk_summary=True)
+        # train, test = df.split_frame(ratios=[0.8], seed = 1)
+        # aml = H2OAutoML(max_models =25,
+        #         balance_classes=True,
+		# seed =16548846)
+        # aml.train(training_frame = train, y = 'y')
+        # lb = aml.leaderboard
+        # lb.head(rows=lb.nrows)
+        # aml.train(training_frame = train, y = 'y', leaderboard_frame = my_leaderboard_frame)
+        # best_model = aml.get_best_model()
+        # model_path = h2o.save_model(model=best_model,force=True)
+        setup(df, target=chosen_target, silent=True)
+        setup_df = pull()
+        st.dataframe(setup_df)
+        best_model = compare_models()
+        compare_df = pull()
+        st.dataframe(compare_df)
+        save_model(best_model, 'best_model')
 
 if choice == "Download": 
     with open('best_model.pkl', 'rb') as f: 
