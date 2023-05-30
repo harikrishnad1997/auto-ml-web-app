@@ -6,7 +6,7 @@ import numpy as np
 import h2o
 from h2o.automl import H2OAutoML
 # import pandas_profiling
-from ydata_profiling import ProfileReport
+from pandas_profiling import ProfileReport
 import pandas as pd
 from streamlit_pandas_profiling import st_profile_report
 import os 
