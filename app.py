@@ -2,7 +2,7 @@ from operator import index
 import streamlit as st
 import plotly.express as px
 import numpy as np
-# from pycaret.regression import setup, compare_models, pull, save_model, load_model, plot_model
+from pycaret.regression import setup, compare_models, pull, save_model, load_model, plot_model
 from lazypredict.Supervised import LazyRegressor
 from sklearn.model_selection import train_test_split
 from pandas_profiling import ProfileReport
@@ -49,25 +49,25 @@ if choice == "Modelling":
         # aml.train(training_frame = train, y = 'y', leaderboard_frame = my_leaderboard_frame)
         # best_model = aml.get_best_model()
         # model_path = h2o.save_model(model=best_model,force=True)
-        # setup(df, target=chosen_target, silent=True)
-        # setup_df = pull()
-        # st.dataframe(setup_df)
-        # best_model = compare_models()
-        # compare_df = pull()
-        # st.dataframe(compare_df)
-        # plot_model(best_model, plot='residuals', display_format='streamlit')
-        # plot_model(best_model, plot='feature', display_format='streamlit')
-        # plot_model(best_model, plot='error', display_format='streamlit')
-        # save_model(best_model, 'best_model')
-        y = df[chosen_target]
-        X = df.loc[:, df.columns!=chosen_target]
-        X_train, X_test, y_train, y_test = train_test_split(X, y,test_size=.5,random_state =65481254)
-        reg = LazyRegressor(verbose=0,ignore_warnings=False, custom_metric=None )
-        models,predictions = reg.fit(X_train, X_test, y_train, y_test)
-        st.dataframe(models)
-        model_dictionary = reg.provide_models(X_train,X_test,y_train,y_test)
+        setup(df, target=chosen_target, silent=True)
+        setup_df = pull()
+        st.dataframe(setup_df)
+        best_model = compare_models()
+        compare_df = pull()
+        st.dataframe(compare_df)
+        plot_model(best_model, plot='residuals', display_format='streamlit')
+        plot_model(best_model, plot='feature', display_format='streamlit')
+        plot_model(best_model, plot='error', display_format='streamlit')
+        save_model(best_model, 'best_model')
+        # y = df[chosen_target]
+        # X = df.loc[:, df.columns!=chosen_target]
+        # X_train, X_test, y_train, y_test = train_test_split(X, y,test_size=.5,random_state =65481254)
+        # reg = LazyRegressor(verbose=0,ignore_warnings=False, custom_metric=None )
+        # models,predictions = reg.fit(X_train, X_test, y_train, y_test)
+        # st.dataframe(models)
+        # model_dictionary = reg.provide_models(X_train,X_test,y_train,y_test)
 
 if choice == "Download": 
     print("Working")
-    # with open('best_model.pkl', 'rb') as f: 
-    #     st.download_button('Download Model', f, file_name="best_model.pkl")
+    with open('best_model.pkl', 'rb') as f: 
+        st.download_button('Download Model', f, file_name="best_model.pkl")
