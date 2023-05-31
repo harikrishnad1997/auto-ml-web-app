@@ -1,5 +1,0 @@
-default-jre
-openjdk-8-jdk-headless
-openjdk-8-jdk
-openjdk8-jdk-headless
-openjdk8-jdk
