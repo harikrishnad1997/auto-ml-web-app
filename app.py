@@ -49,7 +49,7 @@ if choice == "Modelling":
         # aml.train(training_frame = train, y = 'y', leaderboard_frame = my_leaderboard_frame)
         # best_model = aml.get_best_model()
         # model_path = h2o.save_model(model=best_model,force=True)
-        setup(df, target=chosen_target, session_id = 17968799256)
+        setup(df, target=chosen_target, session_id = 2774764)
         setup_df = pull()
         st.dataframe(setup_df)
         best_model = compare_models()
