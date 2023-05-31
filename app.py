@@ -1,6 +1,7 @@
 from operator import index
 import streamlit as st
-import plotly.express as px
+# import jdk
+# import plotly.express as px
 import numpy as np
 # from pycaret.regression import setup, compare_models, pull, save_model, load_model, plot_model
 # import h2o
