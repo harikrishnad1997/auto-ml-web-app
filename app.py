@@ -14,7 +14,7 @@ if os.path.exists('./dataset.csv'):
     df = pd.read_csv('dataset.csv', index_col=None)
 
 with st.sidebar: 
-    st.image("https://pbs.twimg.com/profile_images/1305487240148086784/j8jxHAXh_400x400.jpg")
+    st.image("https://michael-fuchs-python.netlify.app/post/2022-01-01-automl-using-pycaret-classification_files/p133s1.png")
     st.title("AutoML")
     choice = st.radio("Navigation", ["Upload","Profiling","Modelling", "Download"])
     st.info("This project application helps you build and explore your data.")
