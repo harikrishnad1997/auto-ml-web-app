@@ -10,6 +10,7 @@ import pandas as pd
 from streamlit_pandas_profiling import st_profile_report
 import os 
 
+@st.cache(ttl=24*3600)
 if os.path.exists('./dataset.csv'): 
     df = pd.read_csv('dataset.csv', index_col=None)
 
