@@ -55,9 +55,9 @@ if choice == "Modelling":
         best_model = compare_models()
         compare_df = pull()
         st.dataframe(compare_df)
-        plot_model(best_model, plot='residuals', display_format='streamlit')
-        plot_model(best_model, plot='feature', display_format='streamlit')
-        plot_model(best_model, plot='error', display_format='streamlit')
+        # plot_model(best_model, plot='residuals', display_format='streamlit')
+        # plot_model(best_model, plot='feature', display_format='streamlit')
+        # plot_model(best_model, plot='error', display_format='streamlit')
         save_model(best_model, 'best_model')
         # y = df[chosen_target]
         # X = df.loc[:, df.columns!=chosen_target]
