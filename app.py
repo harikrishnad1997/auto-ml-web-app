@@ -10,8 +10,8 @@ import pandas as pd
 from streamlit_pandas_profiling import st_profile_report
 import os 
 
-@st.cache(ttl=24*3600)
 if os.path.exists('./dataset.csv'): 
+    @st.cache(ttl=24*3600)
     df = pd.read_csv('dataset.csv', index_col=None)
 
 with st.sidebar: 
