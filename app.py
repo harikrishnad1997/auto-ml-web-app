@@ -49,7 +49,7 @@ if choice == "Modelling":
         # aml.train(training_frame = train, y = 'y', leaderboard_frame = my_leaderboard_frame)
         # best_model = aml.get_best_model()
         # model_path = h2o.save_model(model=best_model,force=True)
-        setup(df, target=chosen_target, session_id = 2774764)
+        setup(df, target=chosen_target, session_id = 2774764,imputation_type = 'simple',numeric_imputation='mean',categorical_imputation='mode')
         setup_df = pull()
         st.dataframe(setup_df)
         best_model = compare_models()
@@ -71,3 +71,4 @@ if choice == "Download":
     print("Working")
     with open('best_model.pkl', 'rb') as f: 
         st.download_button('Download Model', f, file_name="best_model.pkl")
+
