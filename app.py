@@ -10,9 +10,13 @@ import pandas as pd
 from streamlit_pandas_profiling import st_profile_report
 import os 
 
+@st.cache
+def load_data():
+	  return pd.read_csv('dataset.csv', index_col=None)
+
 if os.path.exists('./dataset.csv'): 
     # @st.cache(ttl=24*3600)
-    df = pd.read_csv('dataset.csv', index_col=None)
+    df = load_data()
 
 with st.sidebar: 
     st.image("https://michael-fuchs-python.netlify.app/post/2022-01-01-automl-using-pycaret-classification_files/p133s1.png")
@@ -53,12 +57,12 @@ if choice == "Modelling":
         setup(df.dropna(subset=chosen_target), target=chosen_target, session_id = 2774764,imputation_type = 'simple',numeric_imputation='mean',categorical_imputation='mode')
         setup_df = pull()
         st.dataframe(setup_df)
-        best_model = compare_models()
+        best_model = compare_models(n_select = 5)
         compare_df = pull()
         st.dataframe(compare_df)
-        # plot_model(best_model, plot='residuals', display_format='streamlit')
-        # plot_model(best_model, plot='feature', display_format='streamlit')
-        # plot_model(best_model, plot='error', display_format='streamlit')
+        plot_model(best_model, plot='residuals', display_format='streamlit')
+        plot_model(best_model, plot='feature', display_format='streamlit')
+        plot_model(best_model, plot='error', display_format='streamlit')
         save_model(best_model, 'best_model')
         # y = df[chosen_target]
         # X = df.loc[:, df.columns!=chosen_target]
