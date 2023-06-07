@@ -3,20 +3,19 @@ import streamlit as st
 import plotly.express as px
 import numpy as np
 from pycaret.regression import setup, compare_models, pull, save_model, load_model, plot_model
-# from lazypredict.Supervised import LazyRegressor
-# from sklearn.model_selection import train_test_split
+from lazypredict.Supervised import LazyRegressor
+from sklearn.model_selection import train_test_split
 from pandas_profiling import ProfileReport
 import pandas as pd
 from streamlit_pandas_profiling import st_profile_report
 import os 
 
-@st.cache
-def load_data():
+@st.cache(hash_funcs={pd.DataFrame: id})
+def load_data(upload_time):
     return pd.read_csv('dataset.csv', index_col=None)
 
-# Rest of your code...
-
 if os.path.exists('./dataset.csv'): 
+    # @st.cache(ttl=24*3600)
     df = load_data()
 
 with st.sidebar: 
@@ -29,7 +28,8 @@ if choice == "Upload":
     st.title("Upload Your Dataset")
     file = st.file_uploader("Upload Your Dataset")
     if file: 
-        df = pd.read_csv(file, index_col=None)
+        upload_time = file.last_modified
+        df = load_data(upload_time)
         df.to_csv('dataset.csv', index=None)
         st.dataframe(df)
 
