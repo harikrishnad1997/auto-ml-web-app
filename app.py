@@ -3,8 +3,8 @@ import streamlit as st
 import plotly.express as px
 import numpy as np
 from pycaret.regression import setup, compare_models, pull, save_model, load_model, plot_model
-from lazypredict.Supervised import LazyRegressor
-from sklearn.model_selection import train_test_split
+# from lazypredict.Supervised import LazyRegressor
+# from sklearn.model_selection import train_test_split
 from pandas_profiling import ProfileReport
 import pandas as pd
 from streamlit_pandas_profiling import st_profile_report
@@ -12,10 +12,11 @@ import os
 
 @st.cache
 def load_data():
-	  return pd.read_csv('dataset.csv', index_col=None)
+    return pd.read_csv('dataset.csv', index_col=None)
+
+# Rest of your code...
 
 if os.path.exists('./dataset.csv'): 
-    # @st.cache(ttl=24*3600)
     df = load_data()
 
 with st.sidebar: 
